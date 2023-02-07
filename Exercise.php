@@ -3,7 +3,7 @@
 // Chaining Methods And Properties
 class User
 {
-    public string $firstName;
+    private string $firstName;
 
     public function __construct($name)
     {
@@ -28,10 +28,17 @@ class User
         return $this;
     }
 
-    
+    public function getFirstName() {
+        return $this->firstName;
+    }
+
 }
 
-$user = new User("Jane");
+// function test
+function test($name) {
+    $user = new User($name);
+    $user->hello()->register()->mail();
+    return $user->getFirstName();
+}
 
-$user->hello()->register()->mail();
-echo $user->firstName;
+echo test("Joe");
